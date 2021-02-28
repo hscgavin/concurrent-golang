@@ -1,1 +1,3 @@
 # concurrent-golang
+
+Concurrent Programming with Go, use Go's powerful tools that allow multi-threaded programs to be written in a clear, easily understood manner. First, learn how to use goroutines to initiate concurrent tasks. Then, explore the sync package and how to use it to coordinate goroutines. Finally, discover channels and how they compliment and complete the coordination features of the sync package.
