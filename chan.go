@@ -10,14 +10,21 @@ func main() {
 	ch := make(chan int, 1)
 	wg.Add(2)
 	go func(ch <-chan int, wg *sync.WaitGroup) {
-		fmt.Println(<-ch)
-		fmt.Println(<-ch)
+		// if msg, ok := <-ch; ok {
+		// 	fmt.Println(msg, ok)
+		// }
+		for msg := range ch {
+			fmt.Println(msg)
+		}
+
 		wg.Done()
 	}(ch, wg)
 
 	go func(ch chan<- int, wg *sync.WaitGroup) {
-		ch <- 42
-		ch <- 45
+		for i := 0; i < 10; i++ {
+			ch <- i
+		}
+		close(ch)
 		wg.Done()
 	}(ch, wg)
 
